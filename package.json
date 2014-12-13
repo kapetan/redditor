@@ -1,0 +1,32 @@
+{
+  "name": "redditor",
+  "version": "1.0.0",
+  "description": "Small Reddit API wrapper",
+  "main": "source/index.js",
+  "scripts": {
+    "test": "tape test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kapetan/redditor"
+  },
+  "keywords": [
+    "reddit",
+    "api",
+    "wrapper"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kapetan/redditor/issues"
+  },
+  "dependencies": {
+    "request": "~2.51.0",
+    "pump": "~1.0.0"
+  },
+  "devDependencies": {
+    "tape": "~3.0.3",
+    "after-sequence": "~1.0.0",
+    "nock": "~0.51.0",
+    "concat-stream": "~1.4.7"
+  }
+}
