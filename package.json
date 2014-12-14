@@ -1,6 +1,6 @@
 {
   "name": "redditor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Minimal reddit API wrapper",
   "main": "source/index.js",
   "scripts": {
