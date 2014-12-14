@@ -33,10 +33,11 @@ reddit({
 });
 ```
 
-Or using `cookie` and `modhash` directly.
+Or using `username`, `cookie` and `modhash` directly.
 
 ```javascript
 var authorized = reddit({
+	username: 'test_username',
 	cookie: 'test_cookie',
 	modhash: 'test_modhash'
 });

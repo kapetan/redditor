@@ -136,6 +136,7 @@ test('authorized requests', function(t) {
 			t.ok(authorized.session);
 			t.ok(authorized.session.cookie);
 			t.ok(authorized.session.modhash);
+			t.equal(authorized.session.username, user.username);
 
 			callback();
 		});
@@ -155,6 +156,7 @@ test('authorized requests', function(t) {
 
 	next(function(callback) {
 		var api = reddit({
+			username: authorized.session.username,
 			cookie: authorized.session.cookie,
 			modhash: authorized.session.modhash
 		});

@@ -130,7 +130,7 @@ var login = function(credentials, callback) {
 	callback = callback || function() {};
 	var that = extend({}, login.defaults);
 
-	if(credentials.cookie && credentials.modhash) {
+	if(credentials.username && credentials.cookie && credentials.modhash) {
 		that.session = credentials;
 		callback(null, that);
 
