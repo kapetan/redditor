@@ -1,7 +1,7 @@
 {
   "name": "redditor",
   "version": "1.0.0",
-  "description": "Small Reddit API wrapper",
+  "description": "Minimal reddit API wrapper",
   "main": "source/index.js",
   "scripts": {
     "test": "tape test/index.js"

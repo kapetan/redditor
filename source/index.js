@@ -10,7 +10,7 @@ var pkg = require('../package.json');
 var DEFAULT_BASE_URL = 'http://www.reddit.com';
 var DEFAULT_USER_AGENT = util.format('%s v%s', pkg.name, pkg.version);
 
-var queue = new Queue(2500);
+var queue = new Queue(2000);
 
 var copy = function(obj) {
 	return JSON.parse(JSON.stringify(obj));
