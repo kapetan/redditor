@@ -77,6 +77,15 @@ if(env.REDDIT_USERNAME && env.REDDIT_PASSWORD) {
 			'X-Ratelimit-Reset': '600',
 		})
 		.post('/api/new_captcha')
+		.reply(200, {
+			json: {
+				errors: [],
+				data: {
+					iden: 'test_captcha_id'
+				}
+			}
+		})
+		.get('/captcha/test_captcha_id')
 		.reply(200, function() {
 			return new Buffer(32);
 		})
@@ -176,14 +185,35 @@ test('authorized requests', function(t) {
 });
 
 test('stream captcha', function(t) {
-	var stream = reddit.post('/api/new_captcha');
-	var sink = concat(function(data) {
-		t.ok(data.length > 0);
+	var id;
+	var next = sequence(function() {
+		t.end();
 	});
 
-	pump(stream, sink, function(err) {
-		t.notOk(err, errorMessage(err));
-		t.end();
+	next(function(callback) {
+		reddit.post('/api/new_captcha', function(err, response) {
+			t.notOk(err);
+
+			t.ok(response.json);
+			t.ok(response.json.data);
+			t.ok(response.json.data.iden);
+
+			id = response.json.data.iden;
+
+			callback();
+		});
+	});
+
+	next(function(callback) {
+		var stream = reddit.get('/captcha/' + id);
+		var sink = concat(function(data) {
+			t.ok(data.length > 0);
+		});
+
+		pump(stream, sink, function(err) {
+			t.notOk(err, errorMessage(err));
+			callback();
+		});
 	});
 });
 
